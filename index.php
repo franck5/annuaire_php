@@ -27,6 +27,16 @@ $groupe = $_POST['groupe'];
 	    'phone' => $phone
 	    
 	    ));
+$id = $bdd->lastInsertId();
+var_dump($id);
+var_dump($groupe);
+$req = $bdd->prepare("INSERT INTO appartenir (`fk_user`,`fk_groupe`) VALUES (:id, :groupe)");
+foreach($groupe as $valeur){
+  $req->execute([
+    "id"=>$id,
+    "groupe"=>$valeur
+  ]);
+};
 
 ?>
 
@@ -58,15 +68,6 @@ ON appartenir.fk_groupe = groupe.id
 INNER JOIN annuaire
 On appartenir.fk_user = annuaire.id');
 //Gestion des groupes
-/*$id = $bdd->lastInsertId();
-var_dump($id);
-$req = $bdd->prepare("INSERT INTO appartenir (`fk_user`,`fk_groupe`) VALUES (:id, :groupe)");
-foreach($groupe as $valeur)
-{
-  $req->execute([
-    "id"=>$id,
-    "groupe"=>$valeur
-  ]);*/
 //on affiche le tableau
 		while($donnees=$reponse->fetch()){
 
