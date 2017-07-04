@@ -3,27 +3,66 @@
 <head>
 	<meta charset="utf-8">
 	<title></title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
 </head>
 <body>
 
-	<form action="index.php" method="POST">
-		<label for="last_name">Nom :</label>
-		<input type="text" name="last_name" id="last_name" value="">
-		<label for="first_name">Prenom :</label>
-		<input type="text" name="first_name" id="first_name">
-		<label for="business">Entreprise :</label>
-		<input type="text" name="business" id="business">
-		<label for="dat">Date de naissance :</label>
-		<input type="date" name="dat" id="dat">
-		<label for="address">Adresse :</label>
-		<input type="text" name="address" id="address">
-		<label for="phone">Téléphone :</label>
-		<input type="text" name="phone" id="phone">
-		<input type="checkbox" name="groupe[]" id="Famille" value="1"><label for="Famille">Famille</label>
-		<input type="checkbox" name="groupe[]" id="Amis" value="2"><label for="Amis">Amis</label>
-		<input type="checkbox" name="groupe[]" id="Simplon" value="3"><label for="Simplon">Simplon</label>
-		<input type="checkbox" name="groupe[]" id="Autre" value="4"><label for="Autre">Autre</label>
-		<input type="submit" name="Envoyer" value="Envoyer">
+<nav>
+    <div class="nav-wrapper">
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <li><h4>Annuaire Php</h4></li>
+      </ul>
+    </div>
+  </nav>
+
+<div class="row">
+	<form action="index.php" method="POST" class="col s12">
+    	<div class="row">
+        	<div class="input-field col s6">
+				<label for="last_name">Nom :</label>
+				<input type="text" name="last_name" id="last_name" value="">
+			</div>
+			<div class="input-field col s6">
+				<label for="first_name">Prenom :</label>
+				<input type="text" name="first_name" id="first_name">
+			</div>
+		</div>
+		<div class="row">
+        	<div class="input-field col s6">
+				<label for="business">Entreprise :</label>
+				<input type="text" name="business" id="business">
+			</div>
+        	<div class="input-field col s6">
+				
+				<input type="date" name="dat" id="dat">
+			</div>
+		</div>
+		<div class="row">
+        	<div class="input-field col s6">
+				<label for="address">Adresse :</label>
+				<input type="text" name="address" id="address">
+			</div>
+			<div class="input-field col s6">
+				<label for="phone">Téléphone :</label>
+				<input type="text" name="phone" id="phone">
+			</div>
+		</div>
+		<div class="row">
+        	<div class="input-field col s6">
+				
+				<input type="checkbox" name="groupe[]" id="Famille" value="1"><label for="Famille">Famille</label>
+				<input type="checkbox" name="groupe[]" id="Amis" value="2"><label for="Amis">Amis</label>
+				<input type="checkbox" name="groupe[]" id="Simplon" value="3"><label for="Simplon">Simplon</label>
+				<input type="checkbox" name="groupe[]" id="Autre" value="4"><label for="Autre">Autre</label>
+			</div>
+			<div class="input-field col s6">
+				<input type="submit" name="Envoyer" value="Envoyer" class="waves-effect waves-light btn">
+				
+			</div>
+		</div>
+		
 	</form>
+</div>
 </body>
 </html>

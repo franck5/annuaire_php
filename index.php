@@ -45,9 +45,11 @@ foreach($groupe as $valeur){
 <head>
 <meta charset="utf-8">
 	<title></title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
 </head>
 <body>
-<table border=solid>
+<table class="bordered">
 	<thead>
         <th>Nom</th>
         <th>Prenom</th>
@@ -56,8 +58,8 @@ foreach($groupe as $valeur){
         <th>Entreprise</th>
         <th>Adresse</th>
         <th>Groupes</th>
-        <th>Modifier</th>
         <th>Supprimer</th>
+        <th>Modifier</th>
       </thead>
       <tbody>
 		<?php
@@ -79,8 +81,8 @@ On appartenir.fk_user = annuaire.id');
 				<td>'.$donnees['business'].'</td>
 				<td>'.$donnees['address'].'</td>
 				<td>'.$donnees['groupe'].'</td>
-				<td><button>Modifier</button></td>
-				<td><form action="Delete.php" method="POST"><input type="HIDDEN" name="id" value='.$donnees['id'].'><button type="submit">Supprimer</button></form></td>
+				<td><form action="Delete.php" method="POST"><input type="HIDDEN" name="id" value='.$donnees['id'].'><button class="waves-effect waves-light btn type="submit">Supprimer</button></form></td>
+				<td><form action="Modifier.php" method="POST"><input type="HIDDEN" name="id" value='.$donnees['id'].'><button class="waves-effect waves-light btn type="submit">Modifier</button></form></td>
 				</tr>';
 		}
 
