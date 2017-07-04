@@ -16,6 +16,7 @@ $dat = $_POST['dat'];
 $phone = $_POST['phone'];
 $groupe = $_POST['groupe'];
 
+
 	$req = $bdd->prepare('INSERT INTO annuaire(last_name, first_name, business, address, dat, phone) VALUES(:last_name, :first_name, :business, :address, :dat, :phone)');
 	$req->execute(array(
 	    'last_name' => $last_name,
@@ -26,9 +27,6 @@ $groupe = $_POST['groupe'];
 	    'phone' => $phone
 	    
 	    ));
-//Jointure
-	//$reponse = $bdd->query('SELECT groupe.groupe, appartenir.fk_user FROM groupe, appartenir
-//WHERE groupe.ID = appartenir.fk_user');
 
 ?>
 
@@ -47,12 +45,29 @@ $groupe = $_POST['groupe'];
         <th>Date de naissance</th>
         <th>Entreprise</th>
         <th>Adresse</th>
+        <th>Groupes</th>
         <th>Modifier</th>
         <th>Supprimer</th>
       </thead>
       <tbody>
 		<?php
-		$reponse = $bdd->query('SELECT * FROM annuaire');
+//Jointure de la table appartenir avec la table groupe et de appartenir avec annuaire
+	$reponse = $bdd->query('SELECT * FROM appartenir
+INNER JOIN groupe
+ON appartenir.fk_groupe = groupe.id
+INNER JOIN annuaire
+On appartenir.fk_user = annuaire.id');
+//Gestion des groupes
+/*$id = $bdd->lastInsertId();
+var_dump($id);
+$req = $bdd->prepare("INSERT INTO appartenir (`fk_user`,`fk_groupe`) VALUES (:id, :groupe)");
+foreach($groupe as $valeur)
+{
+  $req->execute([
+    "id"=>$id,
+    "groupe"=>$valeur
+  ]);*/
+//on affiche le tableau
 		while($donnees=$reponse->fetch()){
 
 		echo '<tr>
@@ -62,6 +77,7 @@ $groupe = $_POST['groupe'];
 				<td>'.$donnees['dat'].'</td>
 				<td>'.$donnees['business'].'</td>
 				<td>'.$donnees['address'].'</td>
+				<td>'.$donnees['groupe'].'</td>
 				<td><button>Modifier</button></td>
 				<td><form action="Delete.php" method="POST"><input type="HIDDEN" name="id" value='.$donnees['id'].'><button type="submit">Supprimer</button></form></td>
 				</tr>';
